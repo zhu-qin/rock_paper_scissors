@@ -12,4 +12,22 @@ public class HandHistory {
     this.playerName = playerName;
     this.result = result;
   }
+
+  public int getResult() {
+    return this.result;
+  }
+
+  public String toString() {
+    String result;
+    if (this.result == 1) {
+      result = "win";
+    } else if (this.result == -1) {
+      result = "lose";
+    } else {
+      result = "draw";
+    }
+
+    return result + " : " + playerName + " plays " + playerHand.getHandType() + ". computer plays " + computerHand.getHandType() +".";
+  }
+
 }

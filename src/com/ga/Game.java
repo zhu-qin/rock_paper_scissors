@@ -70,6 +70,9 @@ public class Game {
     int result = humanPlayer.compareHandsWith(computer);
     HandHistory handPlayed = new HandHistory(humanPlayer.getHand(), computer.getHand(), humanPlayer.getName(), result);
     handHistory.add(handPlayed);
+
+    System.out.println(handPlayed.toString());
+
     playGame();
   }
 
@@ -84,6 +87,39 @@ public class Game {
   }
 
   public void showHistory() {
-    System.out.println("history");
+    int wins = 0;
+    int losses = 0;
+    int draws = 0;
+
+    for (HandHistory handPlayed : handHistory) {
+      if (handPlayed.getResult() == 0) {
+        draws ++;
+      } else if (handPlayed.getResult() == -1) {
+        losses ++;
+      } else {
+        wins ++;
+      }
+    }
+    String results = "Wins = " + wins + ". Losses = " + losses +". Draws = " + draws+ ".";
+    System.out.println(results);
+    continueGame();
+
+  }
+
+  public void continueGame() {
+    String message =
+        "Type 'play' to continue playing.\n"
+            + "Type 'quit' to go back to the main menu.\n";
+    System.out.println(message);
+
+    String playerChoice = scanner.nextLine();
+    if (playerChoice.equalsIgnoreCase("play")) {
+      playGame();
+    } else if (playerChoice.equalsIgnoreCase("quit")) {
+      showMenu();
+    } else {
+      System.out.println("Invalid choice");
+      continueGame();
+    }
   }
 }

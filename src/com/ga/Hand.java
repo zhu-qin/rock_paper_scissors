@@ -15,6 +15,10 @@ public class Hand {
     return "rock";
   }
 
+  public String getHandType() {
+    return handType;
+  }
+
   public int beatsOtherHand(Hand otherHand) {
     if (this.handType.equalsIgnoreCase(otherHand.handType)) {
       return 0;
