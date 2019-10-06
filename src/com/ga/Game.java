@@ -5,21 +5,39 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-  private HumanPlayer humanPlayer;
+  private HumanPlayer playerOne;
+  private HumanPlayer playerTwo;
   private ComputerPlayer computer;
+  private Player otherPlayer;
   private Scanner scanner = new Scanner(System.in);
   private List<HandHistory> handHistory = new ArrayList<>();
 
+
   public static void main(String[] args) {
     System.out.println("Welcome to Rock, Paper, Scissors!");
+    chooseGameTypeV();
+  }
+
+  public static void chooseGameTypeV() {
+    System.out.println("Type 'twoplayer' for two player or 'vscomputer' to play against computer");
     Game game = new Game();
-    System.out.println("Enter your name");
-    String playerName = game.scanner.nextLine();
+    String playerChoice = game.scanner.nextLine();
 
-    game.humanPlayer = new HumanPlayer(playerName);
-    game.computer = new ComputerPlayer("computer");
+    if (playerChoice.equalsIgnoreCase("twoplayer")) {
+      game.playerOne = new HumanPlayer("Player one");
+      game.playerTwo = new HumanPlayer("Player two");
+      game.otherPlayer = game.playerTwo;
+      game.showMenu();
+    } else if (playerChoice.equalsIgnoreCase("vscomputer")) {
+      game.playerOne = new HumanPlayer("Player one");
+      game.computer = new ComputerPlayer("computer");
+      game.otherPlayer = game.computer;
+      game.showMenu();
+    } else {
+      System.out.println("Invalid game type choice");
+      chooseGameTypeV();
+    }
 
-    game.showMenu();
   }
 
   public void showMenu() {
@@ -46,33 +64,34 @@ public class Game {
   }
 
   public void playGame() {
-    String message =
+    getHandInputFromPlayer(playerOne);
+    getHandInputFromPlayer(otherPlayer);
+    int result = playerOne.compareHandsWith(otherPlayer);
+    System.out.println(result);
+    playGame();
+  }
+
+  public void getHandInputFromPlayer(Player player) {
+    if (player.getName().equals("computer")) {
+      player.makeHand("random");
+      return;
+    }
+
+    String message = player.getName() + "\n" +
         "Type 'rock', 'paper', or 'scissors' to play.\n"
-          + "Type 'quit' to go back to the main menu.\n";
+            + "Type 'quit' to go back to the main menu.\n";
     System.out.println(message);
 
     String playerChoice = scanner.nextLine();
 
     if (validHandChoice(playerChoice)) {
-      playThisHand(playerChoice);
+      player.makeHand(playerChoice);
     } else if (playerChoice.equalsIgnoreCase("quit")) {
       showMenu();
     } else {
       System.out.println("Invalid selection");
-      playGame();
+      getHandInputFromPlayer(player);
     }
-  }
-
-  public void playThisHand(String playerChoice) {
-    humanPlayer.makeHand(playerChoice);
-    computer.makeHand("random");
-    int result = humanPlayer.compareHandsWith(computer);
-    HandHistory handPlayed = new HandHistory(humanPlayer.getHand(), computer.getHand(), humanPlayer.getName(), result);
-    handHistory.add(handPlayed);
-
-    System.out.println(handPlayed.toString());
-
-    playGame();
   }
 
   public boolean validHandChoice(String handType) {
