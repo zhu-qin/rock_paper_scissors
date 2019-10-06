@@ -24,6 +24,6 @@ public abstract class Player {
   }
 
   public int compareHandsWith(Player otherPlayer) {
-    return this.hand.beatsOtherHand(otherPlayer.hand);
+    return this.getHand().beatsOtherHand(otherPlayer.getHand());
   }
 }
