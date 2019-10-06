@@ -80,7 +80,7 @@ public class Game {
     }
 
     String message = player.getName() + " : \n" +
-        "Type 'rock', 'paper', or 'scissors' to play.\n"
+        "Type 'rock', 'paper', 'scissors', or 'random' to play.\n"
             + "Type 'quit' to go back to the main menu.\n";
     System.out.println(message);
 
@@ -99,7 +99,8 @@ public class Game {
   public boolean validHandChoice(String handType) {
     if (handType.equalsIgnoreCase("rock") ||
         handType.equalsIgnoreCase("paper") ||
-        handType.equalsIgnoreCase("scissors")) {
+        handType.equalsIgnoreCase("scissors") ||
+        handType.equalsIgnoreCase("random")) {
       return true;
     } else {
       return false;
