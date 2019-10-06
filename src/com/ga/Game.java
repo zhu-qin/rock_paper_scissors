@@ -35,7 +35,7 @@ public class Game {
       game.showMenu();
     } else {
       System.out.println("Invalid game type choice");
-      chooseGameTypeV();
+      chooseGameType();
     }
 
   }
