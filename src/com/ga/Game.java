@@ -15,10 +15,10 @@ public class Game {
 
   public static void main(String[] args) {
     System.out.println("Welcome to Rock, Paper, Scissors!");
-    chooseGameTypeV();
+    chooseGameType();
   }
 
-  public static void chooseGameTypeV() {
+  public static void chooseGameType() {
     System.out.println("Type 'twoplayer' for two player or 'vscomputer' to play against computer");
     Game game = new Game();
     String playerChoice = game.scanner.nextLine();
