@@ -4,14 +4,20 @@ import java.util.Random;
 
 public class Hand {
   private String handType;
+  private Player player;
   public static String[] handChoices = {"rock", "paper", "scissors"};
 
-  public Hand(String handType) {
+  public Hand(String handType, Player player) {
+    this.player = player;
     if (handType.equalsIgnoreCase("random")) {
       this.handType = this.generateRandomHand();
     } else {
       this.handType = handType;
     }
+  }
+
+  public Player getPlayer() {
+    return player;
   }
 
   private String generateRandomHand() {

@@ -1,15 +1,13 @@
 package com.ga;
 
 public class HandHistory {
-  private Hand playerHand;
-  private Hand computerHand;
-  private String playerName;
+  private Hand playerOneHand;
+  private Hand otherPlayerHand;
   private int result;
 
-  public HandHistory(Hand playerHand, Hand computerHand, String playerName, int result) {
-    this.playerHand = playerHand;
-    this.computerHand = computerHand;
-    this.playerName = playerName;
+  public HandHistory(Hand playerOneHand, Hand otherPlayerHand, int result) {
+    this.playerOneHand = playerOneHand;
+    this.otherPlayerHand = otherPlayerHand;;
     this.result = result;
   }
 
@@ -20,14 +18,20 @@ public class HandHistory {
   public String toString() {
     String result;
     if (this.result == 1) {
-      result = "win";
+      result = "=== Player one wins. Player one plays "
+          + playerOneHand.getHandType()
+          + ". Player two plays "
+          + otherPlayerHand.getHandType() + ". ===";
     } else if (this.result == -1) {
-      result = "lose";
+      result = "=== Player two wins. Player one plays "
+          + playerOneHand.getHandType()
+          + ". Player two plays "
+          + otherPlayerHand.getHandType() + ". ===";;
     } else {
-      result = "draw";
+      result = "=== Draw both players play " + playerOneHand.getHandType() + ". ===";
     }
 
-    return result + " : " + playerName + " plays " + playerHand.getHandType() + ". Computer plays " + computerHand.getHandType() +".";
+    return result;
   }
 
 }

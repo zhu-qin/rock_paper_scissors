@@ -20,7 +20,7 @@ public abstract class Player {
   }
 
   public void makeHand(String handType) {
-    this.hand = new Hand(handType);
+    this.hand = new Hand(handType, this);
   }
 
   public int compareHandsWith(Player otherPlayer) {

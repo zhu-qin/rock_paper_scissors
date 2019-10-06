@@ -67,7 +67,9 @@ public class Game {
     getHandInputFromPlayer(playerOne);
     getHandInputFromPlayer(otherPlayer);
     int result = playerOne.compareHandsWith(otherPlayer);
-    System.out.println(result);
+    HandHistory handPlayed = new HandHistory(playerOne.getHand(), otherPlayer.getHand(), result);
+    handHistory.add(handPlayed);
+    System.out.println(handPlayed.toString());
     playGame();
   }
 
@@ -77,7 +79,7 @@ public class Game {
       return;
     }
 
-    String message = player.getName() + "\n" +
+    String message = player.getName() + " : \n" +
         "Type 'rock', 'paper', or 'scissors' to play.\n"
             + "Type 'quit' to go back to the main menu.\n";
     System.out.println(message);
@@ -105,20 +107,22 @@ public class Game {
   }
 
   public void showHistory() {
-    int wins = 0;
-    int losses = 0;
+    int playerOnePoints = 0;
+    int otherPlayerPoints = 0;
     int draws = 0;
 
     for (HandHistory handPlayed : handHistory) {
       if (handPlayed.getResult() == 0) {
         draws ++;
       } else if (handPlayed.getResult() == -1) {
-        losses ++;
+        otherPlayerPoints ++;
       } else {
-        wins ++;
+        playerOnePoints ++;
       }
     }
-    String results = "Wins = " + wins + ". Losses = " + losses +". Draws = " + draws+ ".";
+    String results = "Player one points = " + playerOnePoints +
+                    ". Player two points = " + otherPlayerPoints +
+                    ". Draws = " + draws+ ".";
     System.out.println("=== GAME HISTORY ===\n" +results);
     for (HandHistory handPlayed : handHistory) {
       System.out.println(handPlayed.toString());
