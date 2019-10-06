@@ -1,7 +1,10 @@
 package com.ga;
 
+import java.util.Random;
+
 public class Hand {
   private String handType;
+  public static String[] handChoices = {"rock", "paper", "scissors"};
 
   public Hand(String handType) {
     if (handType.equalsIgnoreCase("random")) {
@@ -12,7 +15,9 @@ public class Hand {
   }
 
   private String generateRandomHand() {
-    return "rock";
+    Random rand = new Random();
+    int n = rand.nextInt(3);
+    return Hand.handChoices[n];
   }
 
   public String getHandType() {
@@ -20,11 +25,14 @@ public class Hand {
   }
 
   public int beatsOtherHand(Hand otherHand) {
-    if (this.handType.equalsIgnoreCase(otherHand.handType)) {
+    String convertedHand = this.handType.toLowerCase();
+    String convertedOtherHand = otherHand.handType.toLowerCase();
+
+    if (convertedHand.equals(convertedOtherHand)) {
       return 0;
-    } else if (this.handType.equals("rock") && otherHand.handType.equals("scissors") ||
-              this.handType.equals("scissors") && otherHand.handType.equals("paper") ||
-              this.handType.equals("paper") && otherHand.handType.equals("rock")) {
+    } else if (convertedHand.equals("rock") && convertedOtherHand.equals("scissors") ||
+              convertedHand.equals("scissors") && convertedOtherHand.equals("paper") ||
+              convertedHand.equals("paper") && convertedOtherHand.equals("rock")) {
       return 1;
     } else {
       return -1;

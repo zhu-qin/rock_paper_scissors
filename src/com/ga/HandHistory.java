@@ -27,7 +27,7 @@ public class HandHistory {
       result = "draw";
     }
 
-    return result + " : " + playerName + " plays " + playerHand.getHandType() + ". computer plays " + computerHand.getHandType() +".";
+    return result + " : " + playerName + " plays " + playerHand.getHandType() + ". Computer plays " + computerHand.getHandType() +".";
   }
 
 }

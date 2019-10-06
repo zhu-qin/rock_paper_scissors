@@ -24,12 +24,11 @@ public class Game {
 
   public void showMenu() {
 
-    String message =
-        "MAIN MENU \n "
-        + "=====\n"
-        + "1. Type 'play' to play.\n"
-        + "2. Type 'history' to view your game history. \n"
-        + "3. Type 'quit' to stop playing.";
+    String message = "MAIN MENU \n "
+                    + "=====\n"
+                    + "1. Type 'play' to play.\n"
+                    + "2. Type 'history' to view your game history. \n"
+                    + "3. Type 'quit' to stop playing.";
     System.out.println(message);
     String playerChoice = scanner.nextLine();
 
@@ -101,7 +100,10 @@ public class Game {
       }
     }
     String results = "Wins = " + wins + ". Losses = " + losses +". Draws = " + draws+ ".";
-    System.out.println(results);
+    System.out.println("=== GAME HISTORY ===\n" +results);
+    for (HandHistory handPlayed : handHistory) {
+      System.out.println(handPlayed.toString());
+    }
     continueGame();
 
   }

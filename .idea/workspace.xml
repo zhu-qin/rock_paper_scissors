@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95c3e7c8-8fc4-427b-8e1a-8d32fa5752ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ga/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ga/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ga/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ga/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ga/HandHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ga/HandHistory.java" afterDir="false" />
@@ -92,7 +88,9 @@
       <updated>1570315863260</updated>
       <workItem from="1570315864531" duration="202000" />
       <workItem from="1570316102711" duration="188000" />
-      <workItem from="1570316372855" duration="6174000" />
+      <workItem from="1570316372855" duration="6249000" />
+      <workItem from="1570323474907" duration="6000" />
+      <workItem from="1570323484530" duration="2018000" />
     </task>
     <servers />
   </component>
@@ -104,7 +102,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
