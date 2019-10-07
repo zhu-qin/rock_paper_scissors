@@ -1,0 +1,8 @@
+Player one,rock,Computer,rock,0
+Player one,rock,Computer,paper,-1
+Player one,rock,Computer,scissors,1
+Player one,rock,Computer,rock,0
+Player one,rock,Computer,scissors,1
+Player one,rock,Computer,paper,-1
+Player one,rock,Computer,scissors,1
+Player one,rock,Computer,scissors,1

@@ -1,5 +1,9 @@
 package com.ga;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,7 +34,7 @@ public class Game {
       game.showMenu();
     } else if (playerChoice.equalsIgnoreCase("vscomputer")) {
       game.playerOne = new HumanPlayer("Player one");
-      game.computer = new ComputerPlayer("computer");
+      game.computer = new ComputerPlayer("Computer");
       game.otherPlayer = game.computer;
       game.showMenu();
     } else {
@@ -68,13 +72,18 @@ public class Game {
     getHandInputFromPlayer(otherPlayer);
     int result = playerOne.compareHandsWith(otherPlayer);
     HandHistory handPlayed = new HandHistory(playerOne.getHand(), otherPlayer.getHand(), result);
+    try {
+      writeHistoryToFile("history.txt", playerOne, playerOne.getHand(), otherPlayer, otherPlayer.getHand(), result);
+    } catch (IOException  e) {
+      System.out.println("Failed to write to file");
+    }
     handHistory.add(handPlayed);
     System.out.println(handPlayed.toString());
     playGame();
   }
 
   public void getHandInputFromPlayer(Player player) {
-    if (player.getName().equals("computer")) {
+    if (player.getName().equalsIgnoreCase("computer")) {
       player.makeHand("random");
       return;
     }
@@ -146,6 +155,37 @@ public class Game {
     } else {
       System.out.println("Invalid choice");
       continueGame();
+    }
+  }
+
+  public void writeHistoryToFile(
+      String fileName,
+      Player playerOne,
+      Hand playerOneHand,
+      Player playerTwo,
+      Hand playerTwoHand,
+      int result) throws IOException {
+    File file = new File(fileName);
+    BufferedWriter writer = null;
+
+    try {
+      writer = new BufferedWriter(new FileWriter(file, true));
+      String stringResults = playerOne.getName()
+          +  ","
+          +  playerOneHand.getHandType()
+          + ","
+          + playerTwo.getName()
+          +  ","
+          +  playerTwoHand.getHandType()
+          +  ","
+          + Integer.toString(result)
+          + "\n";
+
+      writer.write(stringResults);
+    } catch (IOException e) {
+      e.getStackTrace();
+    } finally {
+      writer.close();
     }
   }
 }
