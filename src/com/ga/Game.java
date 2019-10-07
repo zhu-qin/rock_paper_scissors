@@ -16,8 +16,7 @@ public class Game {
   private ComputerPlayer computer;
   private Player otherPlayer;
   private Scanner scanner = new Scanner(System.in);
-  private List<HandHistory> handHistory = new ArrayList<>();
-
+  private List<HandHistory> handHistories = new ArrayList<>();
 
   public static void main(String[] args) {
     System.out.println("Welcome to Rock, Paper, Scissors!");
@@ -73,13 +72,18 @@ public class Game {
     getHandInputFromPlayer(playerOne);
     getHandInputFromPlayer(otherPlayer);
     int result = playerOne.compareHandsWith(otherPlayer);
-    HandHistory handPlayed = new HandHistory(playerOne.getHand(), otherPlayer.getHand(), result);
+    HandHistory handPlayed = new HandHistory(
+        playerOne.getName(),
+        playerOne.getHand().getHandType(),
+        otherPlayer.getName(),
+        otherPlayer.getHand().getHandType(),
+        result);
     try {
       writeHistoryToFile("history.txt", playerOne, playerOne.getHand(), otherPlayer, otherPlayer.getHand(), result);
     } catch (IOException  e) {
       System.out.println("Failed to write to file");
     }
-    handHistory.add(handPlayed);
+//    handHistory.add(handPlayed);
     System.out.println(handPlayed.toString());
     playGame();
   }
@@ -123,7 +127,15 @@ public class Game {
     int otherPlayerPoints = 0;
     int draws = 0;
 
-    for (HandHistory handPlayed : handHistory) {
+
+    try{
+      readFile("history.txt");
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    }
+
+
+    for (HandHistory handPlayed : handHistories) {
       if (handPlayed.getResult() == 0) {
         draws ++;
       } else if (handPlayed.getResult() == -1) {
@@ -136,7 +148,7 @@ public class Game {
                     ". Player two points = " + otherPlayerPoints +
                     ". Draws = " + draws+ ".";
     System.out.println("=== GAME HISTORY ===\n" +results);
-    for (HandHistory handPlayed : handHistory) {
+    for (HandHistory handPlayed : handHistories) {
       System.out.println(handPlayed.toString());
     }
     continueGame();
@@ -201,7 +213,14 @@ public class Game {
 
       while(currentLine != null) {
         String[] data = currentLine.split(",");
+        HandHistory handPlayed = new HandHistory(
+            data[0],
+            data[1],
+            data[2],
+            data[3],
+            Integer.parseInt(data[4]));
 
+        handHistories.add(handPlayed);
         currentLine = reader.readLine();
       }
     } catch (IOException e) {

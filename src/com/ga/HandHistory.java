@@ -1,13 +1,19 @@
 package com.ga;
 
 public class HandHistory {
-  private Hand playerOneHand;
-  private Hand otherPlayerHand;
+
+
+  private String playerOneName;
+  private String playerTwoName;
+  private String playerOneHand;
+  private String playerTwoHand;
   private int result;
 
-  public HandHistory(Hand playerOneHand, Hand otherPlayerHand, int result) {
+  public HandHistory(String playerOneName, String playerOneHand, String playerTwoName,String playerTwoHand, int result) {
+    this.playerOneName = playerOneName;
     this.playerOneHand = playerOneHand;
-    this.otherPlayerHand = otherPlayerHand;;
+    this.playerTwoName = playerTwoName;
+    this.playerTwoHand = playerTwoHand;
     this.result = result;
   }
 
@@ -19,16 +25,16 @@ public class HandHistory {
     String result;
     if (this.result == 1) {
       result = "=== Player one wins. Player one plays "
-          + playerOneHand.getHandType()
-          + ". Player two plays "
-          + otherPlayerHand.getHandType() + ". ===";
+          + playerOneHand
+          + ". " + playerTwoName + " plays "
+          + playerTwoHand + ". ===";
     } else if (this.result == -1) {
-      result = "=== Player two wins. Player one plays "
-          + playerOneHand.getHandType()
-          + ". Player two plays "
-          + otherPlayerHand.getHandType() + ". ===";;
+      result = "=== " + playerTwoName + " wins. Player one plays "
+          + playerOneHand
+          + ". " + playerTwoName +" plays "
+          + playerTwoHand + ". ===";;
     } else {
-      result = "=== Draw both players play " + playerOneHand.getHandType() + ". ===";
+      result = "=== Draw both players play " + playerOneHand + ". ===";
     }
 
     return result;

@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/history.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rock_paper_scissors/com/ga/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ga/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ga/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ga/HandHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ga/HandHistory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +95,7 @@
       <workItem from="1570323474907" duration="6000" />
       <workItem from="1570323484530" duration="9588000" />
       <workItem from="1570388610515" duration="3164000" />
-      <workItem from="1570468830065" duration="1351000" />
+      <workItem from="1570468830065" duration="2576000" />
     </task>
     <servers />
   </component>
