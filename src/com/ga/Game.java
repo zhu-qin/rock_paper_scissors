@@ -1,7 +1,9 @@
 package com.ga;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,7 +85,7 @@ public class Game {
   }
 
   public void getHandInputFromPlayer(Player player) {
-    if (player.getName().equalsIgnoreCase("computer")) {
+    if (player.getName().equalsIgnoreCase("Computer")) {
       player.makeHand("random");
       return;
     }
@@ -188,4 +190,25 @@ public class Game {
       writer.close();
     }
   }
+
+  public void readFile(String fileName) throws IOException {
+    File file = new File(fileName);
+    BufferedReader reader = null;
+    try {
+      reader = new BufferedReader(new FileReader(file));
+
+      String currentLine = reader.readLine();
+
+      while(currentLine != null) {
+        String[] data = currentLine.split(",");
+
+        currentLine = reader.readLine();
+      }
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
+    } finally {
+      reader.close();
+    }
+  }
+
 }
